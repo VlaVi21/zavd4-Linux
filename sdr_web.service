@@ -1,0 +1,16 @@
+[Unit]
+Description=SDR Web Dashboard and Spectrum Streamer
+After=network.target
+
+[Service]
+User=vladDos
+WorkingDirectory=/home/vladDos/projects/sdr_monitor
+ExecStart=/home/vladDos/projects/sdr_monitor/venv/bin/uvicorn sdr_web_app:app --host 0.0.0.0 --port 8000
+Restart=always
+RestartSec=3
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=sdr_web
+
+[Install]
+WantedBy=multi-user.target
